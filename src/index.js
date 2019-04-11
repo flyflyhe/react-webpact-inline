@@ -1,16 +1,17 @@
-import React, { Component }  from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'antd';
+import List from './List.js';
+import CreateFrom from './Form.js';
 import './App.css';
 
-class App extends Component{
+class App extends Component {
     render() {
         return (
             <div>
-                <Button type="primary">Primary</Button>
-                <Button>Default</Button>
-                <Button type="dashed">Dashed</Button>
-                <Button type="danger">Danger</Button>
+                <div>
+                    <CreateFrom />
+                </div>
+                <List />
             </div>
         );
     }
@@ -18,6 +19,6 @@ class App extends Component{
 
 const Index = () => {
     return <div>Hello React!</div>;
-};  
+};
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));

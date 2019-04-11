@@ -39,11 +39,11 @@ module.exports = {
       loader: 'babel-loader',
 
       options: {
-        plugins: ['syntax-dynamic-import'],
+        plugins: ['syntax-dynamic-import', '@babel/plugin-proposal-class-properties'],
 
         presets: [['@babel/preset-env',{
           'modules': false
-        }], '@babel/preset-react']
+        }], '@babel/preset-react',]
       },
 
       test: /\.jsx?$/

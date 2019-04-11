@@ -5,6 +5,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "babel-loader": "^8.0.5",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -16,8 +17,9 @@
   },
   "dependencies": {
     "antd": "^3.16.2",
+    "axios": "^0.18.0",
     "clean-webpack-plugin": "^2.0.1",
-    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^3.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
