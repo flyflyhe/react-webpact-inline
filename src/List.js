@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Table, Divider, Tag, Button} from 'antd';
+import {Table, Divider, Tag, Button, Switch} from 'antd';
 import Axios from 'axios';
+import UpdateFrom from './UpdateForm';
 
 class List extends Component {
     columns = [
@@ -14,6 +15,11 @@ class List extends Component {
             title: '时间',
             dataIndex: 'date',
         }, {
+            title: '当前图片',
+            dataIndex: 'img',
+            render: (v) => <img src={v} alt="" width={"100px"} height={"100px"}/>
+        },
+        {
             title: '跳转链接',
             dataIndex: 'url'
         }, {
@@ -23,15 +29,36 @@ class List extends Component {
         }, {
             title: '开关',
             dataIndex: 'enable',
-            render: text => <a href="javascript:;">{text}</a>,
+            render: (v, record) => <Switch defaultChecked={parseInt(v) === 1} onChange={(bool, e) => this.onChange(bool, record)} />
         }, {
             title: '操作',
-            render: () => <div>
-                <Button>编辑</Button>
-                <Button color={"red"}>删除</Button>
+            render: (v, record) => <div>
+                <UpdateFrom record={record} />
+                <Button type={"danger"} onClick={() => this.onDelete(record)}>删除</Button>
             </div>
         }
     ];
+    onDelete = (record) => {
+        let id = record.id;
+        Axios.post('/l3admin/alert-config/delete', {id:id}).then((res) => {
+            alert('删除成功');
+            window.location.reload();
+        });
+    };
+
+    onChange = (bool, record) => {
+        let id = record.id;
+        let newRecord = {id:id};
+        newRecord.status = bool ? 1 : 0;
+        this.update(newRecord);
+    };
+
+    update = (record) => {
+        Axios.post('/l3admin/alert-config/update', record).then((res) => {
+            alert('添加成功');
+            window.location.reload();
+        });
+    };
 
     rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {
@@ -47,7 +74,7 @@ class List extends Component {
     };
     constructor(props) {
         super(props);
-        Axios.get('http://link.cn/l3admin/alert-config/list').then((res) => {
+        Axios.get('/l3admin/alert-config/list').then((res) => {
             console.log(res);
             this.setState({
                 data: res.data
