@@ -104,7 +104,7 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
                         >
                             {getFieldDecorator('img', {
                             })(
-                                <Upload action={"/l3admin/file/upload"}
+                                <Upload action={process.env.REACT_APP_BASE_URI+"/l3admin/file/upload"}
                                         onChange={this.uploadChange}
                                 >
                                     <Button type="ghost">
@@ -174,7 +174,7 @@ class CollectionsPage extends React.Component {
             } else {
                 delete values.img;
             }
-            Axios.post('/l3admin/alert-config/update', values).then(() => {
+            Axios.post(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/update', values).then(() => {
                 alert('更新成功');
                 window.location.reload();
             });

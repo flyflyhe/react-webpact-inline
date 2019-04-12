@@ -3,8 +3,10 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const Dotenv = require('dotenv-webpack');
+const env = process.env.NODE_ENV;
 
-
+console.log(process.env);
 
 /*
  * SplitChunksPlugin is enabled by default and replaced
@@ -69,7 +71,10 @@ module.exports = {
       cache:false,
       inlineSource: '.(js|css)$'
     }),
-    new HtmlWebpackInlineSourcePlugin()
+    new HtmlWebpackInlineSourcePlugin(),
+    new Dotenv({
+      path: `./.env-${env === "production" ? "prod" : "dev"}`,
+    })
  ],
  entry:() => './src',
 

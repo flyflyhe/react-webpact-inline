@@ -26,6 +26,8 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
         handleChange = (value) => {
             if (2 === parseInt(value)) {
                 this.state.show = true;
+            } else {
+                this.state.show = false;
             }
         };
 
@@ -90,7 +92,7 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
                         >
                             {getFieldDecorator('img', {
                             })(
-                                <Upload action={"/l3admin/file/upload"}
+                                <Upload action={process.env.REACT_APP_BASE_URI+"/l3admin/file/upload"}
                                         onChange={this.uploadChange}
                                 >
                                     <Button type="ghost">
@@ -156,7 +158,7 @@ class CollectionsPage extends React.Component {
             } else {
                  values.img = null;
             }
-            Axios.post('/l3admin/alert-config/post', values).then(() => {
+            Axios.post(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/post', values).then(() => {
                 alert('添加成功');
                 //window.location.reload();
             });

@@ -16,7 +16,9 @@ class App extends Component {
         );
     }
 }
-
+console.log("基础路由");
+console.log(process.env.NODE_ENV);
+console.log(process.env.REACT_APP_BASE_URI);
 const Index = () => {
     return <div>Hello React!</div>;
 };

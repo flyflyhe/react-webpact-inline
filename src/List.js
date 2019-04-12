@@ -40,7 +40,7 @@ class List extends Component {
     ];
     onDelete = (record) => {
         let id = record.id;
-        Axios.post('/l3admin/alert-config/delete', {id:id}).then((res) => {
+        Axios.post(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/delete', {id:id}).then((res) => {
             alert('删除成功');
             window.location.reload();
         });
@@ -54,8 +54,8 @@ class List extends Component {
     };
 
     update = (record) => {
-        Axios.post('/l3admin/alert-config/update', record).then((res) => {
-            alert('添加成功');
+        Axios.post(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/update', record).then((res) => {
+            alert('更新成功');
             window.location.reload();
         });
     };
@@ -74,7 +74,7 @@ class List extends Component {
     };
     constructor(props) {
         super(props);
-        Axios.get('/l3admin/alert-config/list').then((res) => {
+        Axios.get(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/list').then((res) => {
             console.log(res);
             this.setState({
                 data: res.data
