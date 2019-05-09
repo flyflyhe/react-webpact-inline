@@ -161,6 +161,9 @@ class CollectionsPage extends React.Component {
             Axios.post(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/post', values).then(() => {
                 alert('添加成功');
                 window.location.reload();
+            }).catch((err) => {
+                console.log(err);
+                alert('编号不能重复');
             });
 
             form.resetFields();

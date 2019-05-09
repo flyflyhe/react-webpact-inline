@@ -47,7 +47,7 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
                 <Modal
                     width={800}
                     visible={visible}
-                    title="新增活动配置"
+                    title="编辑活动配置"
                     okText="更新"
                     onCancel={onCancel}
                     onOk={onCreate}
@@ -177,6 +177,9 @@ class CollectionsPage extends React.Component {
             Axios.post(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/update', values).then(() => {
                 alert('更新成功');
                 window.location.reload();
+            }).catch((err) => {
+                console.log(err);
+                alert('编号不能重复');
             });
 
             form.resetFields();
