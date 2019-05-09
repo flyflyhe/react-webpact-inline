@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Table, Divider, Tag, Button, Switch} from 'antd';
 import Axios from 'axios';
 import UpdateFrom from './UpdateForm';
+import { Popconfirm } from 'antd';
+
 
 class List extends Component {
     columns = [
@@ -34,7 +36,9 @@ class List extends Component {
             title: '操作',
             render: (v, record) => <div>
                 <UpdateFrom record={record} />
-                <Button type={"danger"} onClick={() => this.onDelete(record)}>删除</Button>
+                <Popconfirm title="确认删除?" okText="确认" cancelText="取消" onConfirm={() => this.onDelete(record)}>
+                    <Button type={"danger"}>删除</Button>
+                </Popconfirm>
             </div>
         }
     ];

@@ -156,7 +156,9 @@ class CollectionsPage extends React.Component {
             if (values.img !== undefined && values.img.file && values.img.file.response.path) {
                 values.img = values.img.file.response.path;
             } else {
-                 values.img = null;
+                values.img = null;
+                alert('图片不能为空');
+                return null;
             }
             Axios.post(process.env.REACT_APP_BASE_URI+'/l3admin/alert-config/post', values).then(() => {
                 alert('添加成功');
@@ -164,6 +166,7 @@ class CollectionsPage extends React.Component {
             }).catch((err) => {
                 console.log(err);
                 alert('编号不能重复');
+                return null;
             });
 
             form.resetFields();
