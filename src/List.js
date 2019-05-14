@@ -32,7 +32,7 @@ class List extends Component {
             title: '平台',
             dataIndex: 'platform_name',
         },{
-            title: '条件名称',
+            title: '条件编号',
             dataIndex: 'condition_name',
         },
         {

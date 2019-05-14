@@ -92,10 +92,10 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
                                 </Select>
                             )}
                         </Form.Item>
-                        <Form.Item label="条件选择">
+                        <Form.Item label="条件编号">
                             {getFieldDecorator('condition_name', {
                                 initialValue: "",
-                                rules: [{ required: true, message: '' }],
+                                rules: [{ required: true, message: '条件编号不能为空' }],
                             })(
                                 <Input />
                             )}
