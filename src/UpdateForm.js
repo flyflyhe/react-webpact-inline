@@ -85,6 +85,27 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
                                 <Input />
                             )}
                         </Form.Item>
+                        <Form.Item label="客户端">
+                            {getFieldDecorator('platform', {
+                                initialValue: record.platform
+                            })(
+                                <Select style={{ width: 120 }} onChange={this.handleChange}>
+                                    <Option value="0">全部</Option>
+                                    <Option value="1">Windows</Option>
+                                    <Option value="2">Mac</Option>
+                                    <Option value="3">iOS</Option>
+                                    <Option value="4">Android</Option>
+                                </Select>
+                            )}
+                        </Form.Item>
+                        <Form.Item label="条件选择">
+                            {getFieldDecorator('condition_name', {
+                                initialValue: record.condition_name,
+                                rules: [{ required: true, message: '' }],
+                            })(
+                                <Input />
+                            )}
+                        </Form.Item>
                         <Form.Item
                             label="时间选择"
                         >

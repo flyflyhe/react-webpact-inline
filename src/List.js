@@ -29,6 +29,13 @@ class List extends Component {
             dataIndex: 'status',
             render: (v) => parseInt(v) === 1 ? '开启' : '关闭'
         }, {
+            title: '平台',
+            dataIndex: 'platform_name',
+        },{
+            title: '条件名称',
+            dataIndex: 'condition_name',
+        },
+        {
             title: '开关',
             dataIndex: 'enable',
             render: (v, record) => <Switch defaultChecked={parseInt(v) === 1} onChange={(bool, e) => this.onChange(bool, record)} />
