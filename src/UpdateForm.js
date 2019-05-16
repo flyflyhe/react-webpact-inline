@@ -151,7 +151,7 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
                                 {getFieldDecorator('url', {
                                     initialValue:record.url
                                 })(
-                                    <TextArea />
+                                    <TextArea style={{width:500}} />
                                 )}
                             </Form.Item> : ''
                         }

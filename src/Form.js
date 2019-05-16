@@ -138,7 +138,7 @@ const CollectionCreateForm = Form.create({ name: 'alert_create' })(
                             this.state.show ? <Form.Item label="自定义链接" >
                                 {getFieldDecorator('url', {
                                 })(
-                                    <TextArea />
+                                    <TextArea style={{width:500}} />
                                 )}
                             </Form.Item> : ''
                         }
